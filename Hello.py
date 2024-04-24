@@ -12,13 +12,13 @@ m.add_child(fl.LatLngPopup())
 map = st_folium(m, height=350, width=700)
 
 
-st.write(f'Location is {data}')
 try:
     data = get_pos(map['last_clicked']['lat'],map['last_clicked']['lng'])
 except:
     data=get_pos('50.0413','19.9457')
     
 if data is not None:
+    print(data)
     st.write(data)
 
 
