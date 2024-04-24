@@ -1,5 +1,7 @@
-altair
-numpy
-pandas
-pydeck
+streamlit-folium
 streamlit
+flickrapi
+scikit-learn
+keras
+tqdm
+
