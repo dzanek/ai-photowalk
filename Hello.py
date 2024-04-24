@@ -11,7 +11,8 @@ m.add_child(fl.LatLngPopup())
 
 map = st_folium(m, height=350, width=700)
 
-
+data=get_pos('50.0413','19.9457')
+st.write(f'Location is {data}')
 data = get_pos(map['last_clicked']['lat'],map['last_clicked']['lng'])
 
 if data is not None:
@@ -134,12 +135,12 @@ for i, cluster in enumerate(clusters):
     #os.popen(f'rm -r {save_dir}/cluster_{cluster}')
     shutil.copyfile(image_paths[i], f'{save_dir}/cluster_{cluster}/{image_paths[i].split("/")[-1]}')
 
-from IPython.display import Image, display
+#from IPython.display import Image, display
 
 
 
 for i in range(8):
-  print(i)
+  st.write(i)
   images = os.listdir(f'{save_dir}/cluster_{i}')
   for img in images[:3]:
-    display(Image(filename=f'{save_dir}/cluster_{i}/{img}', width=200))
+    st.image(f'{save_dir}/cluster_{i}/{img}',width=200)
