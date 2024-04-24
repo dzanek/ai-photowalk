@@ -21,8 +21,8 @@ if data is not None:
 import flickrapi
 
 # Flickr API key and secret
-API_KEY = st.secrets["API_KEY"]
-API_SECRET = st.secrets["API_SECRET"]
+API_KEY = unicode(st.secrets["API_KEY"])
+API_SECRET = unicode(st.secrets["API_SECRET"])
 # Initialize the Flickr API
 flickr = flickrapi.FlickrAPI(API_KEY, API_SECRET,  format='parsed-json')
 flickr.authenticate_via_browser(perms='read')
