@@ -4,4 +4,4 @@ flickrapi
 scikit-learn
 keras
 tqdm
-
+tensorflow
