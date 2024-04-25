@@ -103,9 +103,9 @@ def extract_features(img_path):
     img_data = image.img_to_array(img)
     img_data2 = image.img_to_array(img)
     st.write("data")
-    st.write(img_data)
+    st.table(img_data)
     img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
-    st.write(f"pseudergb")
+    st.table(f"pseudergb")
     st.write(img_data2)
     img_data = np.expand_dims(img_data, axis=0)
     img_data = preprocess_input(img_data)
