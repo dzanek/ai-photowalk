@@ -19,7 +19,7 @@ except:
     
 if data is not None:
     print(data)
-    st.write(data)
+    st.write(f"Location is {data[0]}, {data[1]}")
 
 
 import flickrapi
@@ -46,7 +46,7 @@ params = {
     'lon': lon,
 #    'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
-    'radius': 2,
+    'radius': 5,
     'sort': 'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
@@ -61,7 +61,7 @@ photos_json = flickr.photos.search(**params)
 #    print(photo['url_m'])
 
 print(len(photos_json['photos']['photo']))
-photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>1000]
+photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
 photos_urls = [photo['url_m'] for photo in photos]
 print(len(photos))
 
@@ -70,7 +70,7 @@ import requests
 
 save_dir = f'photos_{lat}_{lon}'
 os.makedirs(save_dir, exist_ok = True)
-
+st.write("Loading Photos from Flickr")
 for p in photos_urls:
     response = requests.get(p, stream=True)
     if response.status_code == 200:
@@ -103,7 +103,7 @@ def extract_features(img_path):
     img_data = preprocess_input(img_data)
     features = model.predict(img_data)
     return features.flatten()
-
+st.write("Clustering Photos")
 # Specify the directory containing the images
 image_dir = save_dir
 
