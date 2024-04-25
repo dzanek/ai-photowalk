@@ -76,6 +76,7 @@ import os
 import requests
 
 save_dir = f'photos_{lat}_{lon}'
+os.rmdir(save_dir)
 os.makedirs(save_dir, exist_ok = True)
 st.write("Loading Photos from Flickr")
 for p in photos_urls:
@@ -133,9 +134,9 @@ num_clusters = 8  # Specify the desired number of clusters
 kmeans = KMeans(n_clusters=num_clusters, random_state=42)
 clusters = kmeans.fit_predict(features)
 
-from sklearn.cluster import KMeans, AgglomerativeClustering
-kmeans = AgglomerativeClustering(n_clusters=num_clusters)
-clusters = kmeans.fit_predict(features)
+#from sklearn.cluster import KMeans, AgglomerativeClustering
+#kmeans = AgglomerativeClustering(n_clusters=num_clusters)
+#clusters = kmeans.fit_predict(features)
 
 # Print the cluster assignments
 for i, cluster in enumerate(clusters):
