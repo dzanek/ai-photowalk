@@ -54,17 +54,20 @@ params = {
     'tags':'landscape, street, sunset, art, portrait'
 }
 
-# Make the API call
-photos_json = flickr.photos.search(**params)
+
 
 # Print the photo URLs
 #for photo in photos['photos']['photo']:
 #    print(photo['url_m'])
-
-st.write(f"found {len(photos_json['photos']['photo'])} photos")
-photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
-photos_urls = [photo['url_m'] for photo in photos]
-st.write(f"kept {len(photos)} photos")
+# Make the API call
+photos = []
+while len(photos) < 100:
+    photos_json = flickr.photos.search(**params)
+    st.write(f"found {len(photos_json['photos']['photo'])} photos")
+    photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
+    photos_urls = [photo['url_m'] for photo in photos]
+    st.write(f"kept {len(photos)} photos")
+    params['radius'] += 1
 
 import os
 import requests
@@ -102,12 +105,12 @@ def extract_features(img_path):
     img2 = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
     img_data = image.img_to_array(img)
     img_data2 = image.img_to_array(img2)
-    st.write("data")
-    st.write(img_data[0])
+    #st.write("data")
+    #st.write(img_data[0])
     #img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
     img_data2 = np.dstack((img_data2, img_data2, img_data2))
-    st.write(f"pseudergb")
-    st.write(img_data2[0])
+    #st.write(f"pseudergb")
+    #st.write(img_data2[0])
     img_data = np.expand_dims(img_data, axis=0)
     img_data = preprocess_input(img_data)
     features = model.predict(img_data)
