@@ -5,11 +5,23 @@ import streamlit as st
 def get_pos(lat,lng):
     return lat,lng
 
-
+params = {
+    'lat': lat,
+    'lon': lon,
+#   'accuracy': 16,  # Accuracy level of the location
+    'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
+    'radius': 15,
+    'sort': 'relevance',#'interestingness-desc',
+    'per_page': 500,  # Number of photos to fetch
+    'page': 1,  # Page number
+    'tags':'drone'
+}
 with st.form("my_form"):
     m = fl.Map()
     m.add_child(fl.LatLngPopup())
-    map = st_folium(m, height=350, width=700)    
+    map = st_folium(m, height=350, width=700)  
+    params['radius'] = st.slider('How far to search?', 0, 25, 5)  
+    views_count = st.slider('How popular?', 0, 1000, 10)  
     submit = st.form_submit_button('Updated the map')
 
 if submit:
@@ -43,17 +55,7 @@ if submit:
     lon = data[1]  # Longitude
 
     # Parameters for the API call
-    params = {
-        'lat': lat,
-        'lon': lon,
-    #   'accuracy': 16,  # Accuracy level of the location
-        'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
-        'radius': 15,
-        'sort': 'relevance',#'interestingness-desc',
-        'per_page': 500,  # Number of photos to fetch
-        'page': 1,  # Page number
-        'tags':'drone'
-    }
+    
 
 
 
@@ -71,7 +73,7 @@ if submit:
         st.write(f"kept {len(photos)} photos")
         params['page'] += 1
         st.write(params['page'])
-        if len(photos) > 250:
+        if len(photos) > 100:
             break
 
 
