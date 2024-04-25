@@ -21,7 +21,7 @@ with st.form("my_form"):
     m.add_child(fl.LatLngPopup())
     map = st_folium(m, height=350, width=700)  
     params['radius'] = st.slider('How far to search?', 0, 25, 5)  
-    views_count = st.slider('How popular?', 0, 1000, 10)  
+    views_count = st.slider('How popular?', 0, 10, 3)  
     submit = st.form_submit_button('Updated the map')
 
 if submit:
@@ -78,20 +78,20 @@ if submit:
 
 
     photos_urls = [photo['url_m'] for photo in photos]
-    st.write(photos_urls)
+   # st.write(photos_urls)
     import os
     import requests
 
     save_dir = f'photos_{lat}_{lon}'
 
     import shutil
-    st.write(os.listdir())
+   # st.write(os.listdir())
 
     shutil.rmtree(f"{save_dir}", ignore_errors=True)
 
     os.makedirs(save_dir, exist_ok = True)
 
-    st.write(os.listdir())
+    #st.write(os.listdir())
     st.write("Loading Photos from Flickr")
     for p in photos_urls:
         response = requests.get(p, stream=True)
@@ -153,8 +153,8 @@ if submit:
     clusters = kmeans.fit_predict(features)
 
     # Print the cluster assignments
-    for i, cluster in enumerate(clusters):
-        st.write(f"Image {image_paths[i]} belongs to cluster {cluster}")
+   # for i, cluster in enumerate(clusters):
+    #    st.write(f"Image {image_paths[i]} belongs to cluster {cluster}")
 
 
     import shutil
@@ -170,13 +170,13 @@ if submit:
 
     #from IPython.display import Image, display
 
-    st.write(os.listdir('.'))
+ #   st.write(os.listdir('.'))
     for i in range(8):
-        st.write(i)
+        st.write(f"Cluster no. {i}")
         images = os.listdir(f'{save_dir}/cluster_{i}')
-        st.write(f'{save_dir}/cluster_{i}')
-        st.write(len(images))
-        st.write(images[:10])
+        #st.write(f'{save_dir}/cluster_{i}')
+        st.write(f"CLuster size: {len(images)}")
+        #st.write(images[:10])
         for img in images[:3]:
-            st.write(img)
+            #st.write(img)
             st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
