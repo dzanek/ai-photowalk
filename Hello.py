@@ -23,7 +23,7 @@ with st.form("my_form"):
     params['radius'] = st.slider('How far to search?', 0, 25, 5)  
     params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
     views_count = st.slider('How popular?', 0, 10, 3)  
-    
+    max_photos = st.slider('How many photos to use?', 6,1000,150)
     submit = st.form_submit_button('Updated the map')
 
 if submit:
@@ -76,7 +76,7 @@ if submit:
         st.write(f"kept {len(photos)} photos")
         params['page'] += 1
         st.write(params['page'])
-        if len(photos) > 100:
+        if len(photos) > max_photos:
             break
 
 
