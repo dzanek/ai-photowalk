@@ -83,7 +83,7 @@ shutil.rmtree(save_dir)
 
 os.makedirs(save_dir, exist_ok = True)
 
-st.write(os.listdir)
+st.write(os.listdir())
 st.write("Loading Photos from Flickr")
 for p in photos_urls:
     response = requests.get(p, stream=True)
