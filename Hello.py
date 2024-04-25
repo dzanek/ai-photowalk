@@ -10,7 +10,7 @@ params = {
     'lon': '-16.6918',
    'accuracy': 1,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
- #   'radius': 15,
+    'radius': 15,
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
@@ -20,7 +20,7 @@ with st.form("my_form"):
     m = fl.Map()
     m.add_child(fl.LatLngPopup())
     map = st_folium(m, height=350, width=700)  
- #   params['radius'] = st.slider('How far to search?', 0, 25, 5)  
+    params['radius'] = st.slider('How far to search?', 0, 50, 5)  
     params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
     views_count = st.slider('How popular?', 0, 10, 3)  
     max_photos = st.slider('How many photos to use?', 6,1000,150)
