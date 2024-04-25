@@ -48,10 +48,10 @@ params = {
     'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
  #   'radius': 5,
-    'sort': 'interestingness-desc',
+    'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    'tags':'landscape, street, sunset'
+    'tags':'drone'
 }
 
 
@@ -83,7 +83,7 @@ save_dir = f'photos_{lat}_{lon}'
 import shutil
 st.write(os.listdir())
 
-shutil.rmtree(f"{save_dir}", ignore_errors=True)
+shutil.rmtree(f"{save_dir}/*", ignore_errors=True)
 
 os.makedirs(save_dir, exist_ok = True)
 
