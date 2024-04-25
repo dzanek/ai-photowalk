@@ -8,7 +8,7 @@ def get_pos(lat,lng):
 params = {
     'lat': '32.7474',
     'lon': '-16.6918',
-   'accuracy': 0,  # Accuracy level of the location
+   'accuracy': 1,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
     'radius': 15,
     'sort': 'relevance',#'interestingness-desc',
@@ -21,7 +21,9 @@ with st.form("my_form"):
     m.add_child(fl.LatLngPopup())
     map = st_folium(m, height=350, width=700)  
     params['radius'] = st.slider('How far to search?', 0, 25, 5)  
+    params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
     views_count = st.slider('How popular?', 0, 10, 3)  
+    
     submit = st.form_submit_button('Updated the map')
 
 if submit:
