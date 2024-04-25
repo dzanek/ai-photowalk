@@ -76,11 +76,14 @@ import os
 import requests
 
 save_dir = f'photos_{lat}_{lon}'
+
 import shutil
 
 shutil.rmtree(save_dir)
 
 os.makedirs(save_dir, exist_ok = True)
+
+st.write(os.listdir)
 st.write("Loading Photos from Flickr")
 for p in photos_urls:
     response = requests.get(p, stream=True)
