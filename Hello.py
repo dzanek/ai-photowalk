@@ -24,7 +24,7 @@ with st.form("my_form"):
     params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
     views_count = st.slider('How popular?', 0, 100, 3)**2  
     max_photos = st.slider('How many photos to use?', 6,1000,150)
-    num_clusters = st.slider('How many categories to create?', 2, 6,16)  # Specify the desired number of clusters
+    num_clusters = st.slider('How many categories to create?', 2, 16,6)  # Specify the desired number of clusters
     submit = st.form_submit_button('Updated the map')
 
 if submit:
