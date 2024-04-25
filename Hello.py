@@ -47,7 +47,7 @@ params = {
     'lon': lon,
  #   'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
-    'radius': 5,
+ #   'radius': 5,
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
