@@ -14,7 +14,7 @@ params = {
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    'tags':'drone'
+    'text':'drone, aerial,'
 }
 with st.form("my_form"):
     m = fl.Map()
@@ -120,14 +120,14 @@ if submit:
 
     print('Function to extract features from an image')
     def extract_features(img_path):
-        #img = image.load_img(img_path, target_size=(224, 224))
-        img = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
+        img = image.load_img(img_path, target_size=(224, 224))
+        #img = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
         #img_data = image.img_to_array(img)
         img_data = image.img_to_array(img)
         #st.write("data")
         #st.write(img_data[0])
         #img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
-        img_data = np.dstack((img_data, img_data, img_data))
+        #img_data = np.dstack((img_data, img_data, img_data))
         #st.write(f"pseudergb")
         #st.write(img_data2[0])
         img_data = np.expand_dims(img_data, axis=0)
