@@ -114,7 +114,7 @@ if submit:
     from sklearn.cluster import KMeans, AgglomerativeClustering
     import numpy as np
     from keras.applications.vgg16 import VGG16, preprocess_input 
-    from tf.keras.applications.resnet50 import ResNet50
+    from keras.applications.resnet50 import ResNet50
     from keras.preprocessing import image
     from tqdm import tqdm_notebook
 
