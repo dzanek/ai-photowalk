@@ -175,12 +175,12 @@ if submit:
     #from IPython.display import Image, display
 
  #   st.write(os.listdir('.'))
-    for i in range(8):
+    for i in range(num_clusters):
         st.write(f"Cluster no. {i}")
         images = os.listdir(f'{save_dir}/cluster_{i}')
         #st.write(f'{save_dir}/cluster_{i}')
         st.write(f"CLuster size: {len(images)}")
         #st.write(images[:10])
-        for img in images[:3]:
+        for img in images[:int(len(images)/10)]:
             #st.write(img)
             st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
