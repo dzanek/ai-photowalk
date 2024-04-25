@@ -35,6 +35,7 @@ flickr = flickrapi.FlickrAPI(API_KEY, API_SECRET,  format='parsed-json')
 # Initialize the Flickr API
 #flickr = flickrapi.FlickrAPI(API_KEY, API_SECRET,  format='parsed-json')
 #flickr.authenticate_via_browser(perms='read')
+st.write("Search for Photos")
 
 # GPS coordinates
 lat = data[0]  # Latitude
