@@ -103,7 +103,7 @@ def extract_features(img_path):
     st.write("data")
     st.write(img_data)
     print('bw',img_data)
-    img_data = np.repeat(img_data[..., np.newaxis], 3, -1)
+    img_data = np.repeat(img_data[..., np.newaxis], 3, -1)[0]
     print('rgb',img_data)
     st.write(f"pseudergb {img_data}")
     st.write(img_data)
