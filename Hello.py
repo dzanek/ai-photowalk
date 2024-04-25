@@ -51,7 +51,7 @@ params = {
     'sort': 'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    'tags':'landscape, street, sunset, art, portrait'
+    'tags':'landscape, street, sunset'
 }
 
 
