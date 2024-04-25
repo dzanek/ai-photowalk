@@ -47,7 +47,7 @@ params = {
     'lon': lon,
  #   'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
- #   'radius': 5,
+    'radius': 15,
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
@@ -64,7 +64,7 @@ photos = []
 for i in range(15):
     photos_json = flickr.photos.search(**params)
     st.write(f"found {len(photos_json['photos']['photo'])} photos")
-    photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>1])
+    photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>100])
  
     st.write(f"kept {len(photos)} photos")
     params['page'] += 1
