@@ -160,11 +160,13 @@ for i, cluster in enumerate(clusters):
 #from IPython.display import Image, display
 
 
-
+st.write(os.listdir('.'))
 for i in range(8):
   st.write(i)
   images = os.listdir(f'{save_dir}/cluster_{i}')
   st.write(f'{save_dir}/cluster_{i}')
+  st.write(len(images))
+  st.write(images[:10])
   for img in images[:3]:
     st.write(img)
     st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
