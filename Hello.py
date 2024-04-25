@@ -6,8 +6,8 @@ def get_pos(lat,lng):
     return lat,lng
 
 params = {
-    'lat': lat,
-    'lon': lon,
+    'lat': '32.7474',
+    'lon': '-16.6918',
 #   'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
     'radius': 15,
@@ -28,7 +28,7 @@ if submit:
     try:
         data = get_pos(map['last_clicked']['lat'],map['last_clicked']['lng'])
     except:
-        data=get_pos('32.7474','-16.6918')
+        data=get_pos(params['lat'],params['lon'])
         
     if data is not None:
         print(data)
