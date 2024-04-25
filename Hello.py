@@ -164,6 +164,7 @@ for i, cluster in enumerate(clusters):
 for i in range(8):
   st.write(i)
   images = os.listdir(f'{save_dir}/cluster_{i}')
+  st.write(f'{save_dir}/cluster_{i}')
   for img in images[:3]:
     st.write(img)
-    st.image(f'{save_dir}/cluster_{i}/{img}',width=200)
+    st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
