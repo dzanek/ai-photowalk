@@ -61,7 +61,7 @@ params = {
 #    print(photo['url_m'])
 # Make the API call
 photos = []
-while len(photos) < 100:
+for i in range(15):
     photos_json = flickr.photos.search(**params)
     st.write(f"found {len(photos_json['photos']['photo'])} photos")
     photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
@@ -69,6 +69,8 @@ while len(photos) < 100:
     st.write(f"kept {len(photos)} photos")
     params['accuracy'] -= 1
     st.write(params['accuracy'])
+    if len(photos) > 50:
+        break
 
 import os
 import requests
