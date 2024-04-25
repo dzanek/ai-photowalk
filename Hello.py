@@ -105,7 +105,7 @@ def extract_features(img_path):
     st.write("data")
     st.write(img_data[0])
     #img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
-    img_data2 = np.dstack(img_data2, img_data2, img_data2)
+    img_data2 = np.dstack((img_data2, img_data2, img_data2))
     st.write(f"pseudergb")
     st.write(img_data2[0])
     img_data = np.expand_dims(img_data, axis=0)
