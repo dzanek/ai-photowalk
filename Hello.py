@@ -47,8 +47,8 @@ params = {
     'lon': lon,
     'accuracy': 16,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
-    'radius': 5,
-    'sort': 'relevance',
+ #   'radius': 5,
+    'sort': 'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
     'tags':'landscape, street, sunset, art, portrait'
@@ -137,12 +137,12 @@ features = [extract_features(img_path) for img_path in image_paths]
 
 print('Cluster the images using K-Means')
 num_clusters = 8  # Specify the desired number of clusters
-kmeans = KMeans(n_clusters=num_clusters, random_state=42)
-clusters = kmeans.fit_predict(features)
+#kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+#clusters = kmeans.fit_predict(features)
 
 #from sklearn.cluster import KMeans, AgglomerativeClustering
-#kmeans = AgglomerativeClustering(n_clusters=num_clusters)
-#clusters = kmeans.fit_predict(features)
+kmeans = AgglomerativeClustering(n_clusters=num_clusters)
+clusters = kmeans.fit_predict(features)
 
 # Print the cluster assignments
 for i, cluster in enumerate(clusters):
