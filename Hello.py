@@ -76,7 +76,10 @@ import os
 import requests
 
 save_dir = f'photos_{lat}_{lon}'
-os.rmdir(save_dir)
+try:
+    os.rmdir(save_dir)
+except:
+    pass
 os.makedirs(save_dir, exist_ok = True)
 st.write("Loading Photos from Flickr")
 for p in photos_urls:
