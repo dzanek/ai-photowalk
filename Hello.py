@@ -98,12 +98,12 @@ model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
 print('Function to extract features from an image')
 def extract_features(img_path):
-    img = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
-    img2 = image.load_img(img_path, target_size=(224, 224))
+    img = image.load_img(img_path, target_size=(224, 224))
+    img2 = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
     img_data = image.img_to_array(img)
     img_data2 = image.img_to_array(img)
     st.write("data")
-    st.write(img_data.shape())
+    st.write(img_data.shape)
     img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
     st.write(f"pseudergb")
     st.write(img_data2.shape)
