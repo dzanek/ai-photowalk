@@ -14,7 +14,7 @@ params = {
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    #'text':'drone'
+    'text':'dji'
 }
 with st.form("my_form"):
     m = fl.Map()
