@@ -22,7 +22,7 @@ with st.form("my_form"):
     map = st_folium(m, height=350, width=700)  
     params['radius'] = st.slider('How far to search?', 0, 25, 5)  
     params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
-    views_count = st.slider('How popular?', 0, 10, 3)  
+    views_count = st.slider('How popular?', 0, 100, 3)**2  
     max_photos = st.slider('How many photos to use?', 6,1000,150)
     submit = st.form_submit_button('Updated the map')
 
@@ -70,7 +70,7 @@ if submit:
     for i in range(15):
         photos_json = flickr.photos.search(**params)
         st.write(f"found {len(photos_json['photos']['photo'])} photos")
-        photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>10])
+        photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>views_count])
         if len(photos_json['photos']['photo']) == 0:
             break
         st.write(f"kept {len(photos)} photos")
