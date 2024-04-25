@@ -69,7 +69,7 @@ for i in range(15):
     st.write(f"kept {len(photos)} photos")
     params['page'] += 1
     st.write(params['page'])
-    if len(photos) > 150:
+    if len(photos) > 250:
         break
 
 
