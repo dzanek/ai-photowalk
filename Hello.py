@@ -50,7 +50,7 @@ params = {
  #   'radius': 5,
     'sort': 'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
-    'page': 1,  # Page number
+    'page': 15,  # Page number
     'tags':'landscape, street, sunset'
 }
 
@@ -64,13 +64,16 @@ photos = []
 for i in range(15):
     photos_json = flickr.photos.search(**params)
     st.write(f"found {len(photos_json['photos']['photo'])} photos")
-    photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
-    photos_urls = [photo['url_m'] for photo in photos]
+    photos.add([i for i in photos_json['photos']['photo'] if int(i['views'])>5000])
+ 
     st.write(f"kept {len(photos)} photos")
-    params['accuracy'] -= 1
+    params['page'] += 1
     st.write(params['accuracy'])
-    if len(photos) > 50:
+    if len(photos) > 150:
         break
+
+
+photos_urls = [photo['url_m'] for photo in photos]
 st.write(photos_urls)
 import os
 import requests
