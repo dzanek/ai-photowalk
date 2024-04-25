@@ -14,7 +14,7 @@ params = {
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    'text':'drone'
+    #'text':'drone'
 }
 with st.form("my_form"):
     m = fl.Map()
@@ -60,7 +60,7 @@ if submit:
     # Parameters for the API call
     
 
-    st.write(params)
+    #st.write(params)
 
     # Print the photo URLs
     #for photo in photos['photos']['photo']:
