@@ -50,7 +50,7 @@ params = {
  #   'radius': 5,
     'sort': 'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
-    'page': 15,  # Page number
+    'page': 1,  # Page number
     'tags':'landscape, street, sunset'
 }
 
@@ -68,7 +68,7 @@ for i in range(15):
  
     st.write(f"kept {len(photos)} photos")
     params['page'] += 1
-    st.write(params['accuracy'])
+    st.write(params['page'])
     if len(photos) > 150:
         break
 
