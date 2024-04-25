@@ -15,7 +15,7 @@ map = st_folium(m, height=350, width=700)
 try:
     data = get_pos(map['last_clicked']['lat'],map['last_clicked']['lng'])
 except:
-    data=get_pos('50.0413','19.9457')
+    data=get_pos('48.8511','2.3430')
     
 if data is not None:
     print(data)
