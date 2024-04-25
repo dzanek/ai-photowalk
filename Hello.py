@@ -61,10 +61,10 @@ photos_json = flickr.photos.search(**params)
 #for photo in photos['photos']['photo']:
 #    print(photo['url_m'])
 
-print(len(photos_json['photos']['photo']))
+st.write(f"found {len(photos_json['photos']['photo'])} photos")
 photos = [i for i in photos_json['photos']['photo'] if int(i['views'])>5000]
 photos_urls = [photo['url_m'] for photo in photos]
-print(len(photos))
+st.write(f"kept {len(photos)} photos")
 
 import os
 import requests
