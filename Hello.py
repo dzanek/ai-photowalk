@@ -51,8 +51,7 @@ if submit:
     #flickr = flickrapi.FlickrAPI(API_KEY, API_SECRET,  format='parsed-json')
     #flickr.authenticate_via_browser(perms='read')
     st.write("Search for Photos")
-    data[0] = round(data[0],4)
-    data[1] = round(data[1],4)
+    data = (round(data[0],4),round(data[1],4))
     # GPS coordinates
     params['lat'] = data[0]  # Latitude
     params['lon'] = data[1]  # Longitude
