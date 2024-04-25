@@ -14,7 +14,7 @@ params = {
     'sort': 'relevance',#'interestingness-desc',
     'per_page': 500,  # Number of photos to fetch
     'page': 1,  # Page number
-    'tag':'dji, drone, mavic, mavic2, mavic3'
+    'tag':'dji, drone, mavic2, mavic3'
 }
 with st.form("my_form"):
     m = fl.Map()
@@ -24,6 +24,7 @@ with st.form("my_form"):
     params['accuracy'] = st.slider('How accurate location you need?', 1, 16, 4)  
     views_count = st.slider('How popular?', 0, 100, 3)**2  
     max_photos = st.slider('How many photos to use?', 6,1000,150)
+    num_clusters = st.slider('How many categories to create?', 2, 6,16)  # Specify the desired number of clusters
     submit = st.form_submit_button('Updated the map')
 
 if submit:
@@ -148,7 +149,7 @@ if submit:
     features = [extract_features(img_path) for img_path in image_paths]
 
     print('Cluster the images using K-Means')
-    num_clusters = 6  # Specify the desired number of clusters
+    
     kmeans = KMeans(n_clusters=num_clusters, random_state=42)
     clusters = kmeans.fit_predict(features)
 
