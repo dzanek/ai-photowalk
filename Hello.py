@@ -181,6 +181,6 @@ if submit:
         #st.write(f'{save_dir}/cluster_{i}')
         st.write(f"CLuster size: {len(images)}")
         #st.write(images[:10])
-        for img in images[:int(len(images)/10)]:
+        for img in images[:max(1,int(len(images)/10))]:
             #st.write(img)
             st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
