@@ -53,7 +53,8 @@ if submit:
     # GPS coordinates
     params['lat'] = data[0]  # Latitude
     params['lon'] = data[1]  # Longitude
-
+    lat = data[0]
+    lon = data[0]
     # Parameters for the API call
     
 
