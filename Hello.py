@@ -78,8 +78,9 @@ import requests
 save_dir = f'photos_{lat}_{lon}'
 
 import shutil
+st.write(os.listdir())
 
-shutil.rmtree(f"{save_dir}/*")
+shutil.rmtree(f"{save_dir}", ignore_errors=True)
 
 os.makedirs(save_dir, exist_ok = True)
 
