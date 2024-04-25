@@ -101,7 +101,7 @@ def extract_features(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
     img2 = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
     img_data = image.img_to_array(img)
-    img_data2 = image.img_to_array(img)
+    img_data2 = image.img_to_array(img2)
     st.write("data")
     st.write(img_data[0])
     img_data2 = np.repeat(img_data2[..., np.newaxis], 3, -1)[0]
