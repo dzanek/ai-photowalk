@@ -65,7 +65,8 @@ for i in range(15):
     photos_json = flickr.photos.search(**params)
     st.write(f"found {len(photos_json['photos']['photo'])} photos")
     photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>10])
- 
+    if len(photos_json['photos']['photo'] == 0:
+        break
     st.write(f"kept {len(photos)} photos")
     params['page'] += 1
     st.write(params['page'])
@@ -83,7 +84,7 @@ save_dir = f'photos_{lat}_{lon}'
 import shutil
 st.write(os.listdir())
 
-shutil.rmtree(f"{save_dir}/*", ignore_errors=True)
+shutil.rmtree(f"{save_dir}", ignore_errors=True)
 
 os.makedirs(save_dir, exist_ok = True)
 
