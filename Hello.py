@@ -71,7 +71,7 @@ for i in range(15):
     st.write(params['accuracy'])
     if len(photos) > 50:
         break
-
+st.write(photos_urls)
 import os
 import requests
 
@@ -140,7 +140,7 @@ clusters = kmeans.fit_predict(features)
 
 # Print the cluster assignments
 for i, cluster in enumerate(clusters):
-    print(f"Image {image_paths[i]} belongs to cluster {cluster}")
+    st.write(f"Image {image_paths[i]} belongs to cluster {cluster}")
 
 
 import shutil
@@ -161,5 +161,6 @@ for i, cluster in enumerate(clusters):
 for i in range(8):
   st.write(i)
   images = os.listdir(f'{save_dir}/cluster_{i}')
+  st.write(images)
   for img in images[:3]:
     st.image(f'{save_dir}/cluster_{i}/{img}',width=200)
