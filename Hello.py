@@ -5,13 +5,14 @@ import streamlit as st
 def get_pos(lat,lng):
     return lat,lng
 
-m = fl.Map()
-
-m.add_child(fl.LatLngPopup())
-
-map = st_folium(m, height=350, width=700)
 
 with st.form("my_form"):
+    m = fl.Map()
+    m.add_child(fl.LatLngPopup())
+    map = st_folium(m, height=350, width=700)    
+    submit = st.form_submit_button('Updated the map')
+
+if submit:
     try:
         data = get_pos(map['last_clicked']['lat'],map['last_clicked']['lng'])
     except:
@@ -166,15 +167,14 @@ with st.form("my_form"):
         shutil.copyfile(image_paths[i], f'{save_dir}/cluster_{cluster}/{image_paths[i].split("/")[-1]}')
 
     #from IPython.display import Image, display
-    st.form_submit_button('Updated the map')
 
-st.write(os.listdir('.'))
-for i in range(8):
-  st.write(i)
-  images = os.listdir(f'{save_dir}/cluster_{i}')
-  st.write(f'{save_dir}/cluster_{i}')
-  st.write(len(images))
-  st.write(images[:10])
-  for img in images[:3]:
-    st.write(img)
-    st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
+    st.write(os.listdir('.'))
+    for i in range(8):
+    st.write(i)
+    images = os.listdir(f'{save_dir}/cluster_{i}')
+    st.write(f'{save_dir}/cluster_{i}')
+    st.write(len(images))
+    st.write(images[:10])
+    for img in images[:3]:
+        st.write(img)
+        st.image(f'{save_dir}/cluster_{i}/{img}',width=300)
