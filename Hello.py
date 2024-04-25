@@ -158,9 +158,9 @@ with st.form("my_form"):
 
     for i, cluster in enumerate(clusters):
         try:
-        os.mkdir(f'{save_dir}/cluster_{cluster}')
+            os.mkdir(f'{save_dir}/cluster_{cluster}')
         except:
-        pass
+            pass
         #print(f"Image {image_paths[i]} belongs to cluster {cluster}")
         #os.popen(f'rm -r {save_dir}/cluster_{cluster}')
         shutil.copyfile(image_paths[i], f'{save_dir}/cluster_{cluster}/{image_paths[i].split("/")[-1]}')
