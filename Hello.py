@@ -8,7 +8,7 @@ def get_pos(lat,lng):
 params = {
     'lat': '32.7474',
     'lon': '-16.6918',
-#   'accuracy': 16,  # Accuracy level of the location
+   'accuracy': 0,  # Accuracy level of the location
     'extras': 'url_m, views, geo',  # Fetch medium-sized image URLs
     'radius': 15,
     'sort': 'relevance',#'interestingness-desc',
