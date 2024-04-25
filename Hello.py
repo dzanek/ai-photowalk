@@ -64,7 +64,7 @@ photos = []
 for i in range(15):
     photos_json = flickr.photos.search(**params)
     st.write(f"found {len(photos_json['photos']['photo'])} photos")
-    photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>50000])
+    photos += ([i for i in photos_json['photos']['photo'] if int(i['views'])>10000])
  
     st.write(f"kept {len(photos)} photos")
     params['page'] += 1
