@@ -51,8 +51,8 @@ if submit:
     st.write("Search for Photos")
 
     # GPS coordinates
-    lat = data[0]  # Latitude
-    lon = data[1]  # Longitude
+    params['lat'] = data[0]  # Latitude
+    params['lon'] = data[1]  # Longitude
 
     # Parameters for the API call
     
