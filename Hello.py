@@ -98,7 +98,7 @@ model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
 print('Function to extract features from an image')
 def extract_features(img_path):
-    img = image.load_img(img_path, target_size=(224, 224))#, color_mode="grayscale")
+    img = image.load_img(img_path, target_size=(224, 224), color_mode="grayscale")
     img_data = image.img_to_array(img)
     st.write("data")
     st.write(img_data)
