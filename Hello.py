@@ -113,13 +113,14 @@ if submit:
     import os
     from sklearn.cluster import KMeans, AgglomerativeClustering
     import numpy as np
-    from keras.applications.vgg16 import VGG16, preprocess_input
+    from keras.applications.vgg16 import VGG16, preprocess_input 
+    from tf.keras.applications.resnet50 import ResNet50
     from keras.preprocessing import image
     from tqdm import tqdm_notebook
 
     print('Load the pre-trained VGG16 model')
-    model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-
+    #model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+    model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
     print('Function to extract features from an image')
     def extract_features(img_path):
         img = image.load_img(img_path, target_size=(224, 224))
@@ -147,13 +148,13 @@ if submit:
     features = [extract_features(img_path) for img_path in image_paths]
 
     print('Cluster the images using K-Means')
-    num_clusters = 8  # Specify the desired number of clusters
-    #kmeans = KMeans(n_clusters=num_clusters, random_state=42)
-    #clusters = kmeans.fit_predict(features)
+    num_clusters = 6  # Specify the desired number of clusters
+    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+    clusters = kmeans.fit_predict(features)
 
     #from sklearn.cluster import KMeans, AgglomerativeClustering
-    kmeans = AgglomerativeClustering(n_clusters=num_clusters)
-    clusters = kmeans.fit_predict(features)
+    #kmeans = AgglomerativeClustering(n_clusters=num_clusters)
+    #clusters = kmeans.fit_predict(features)
 
     # Print the cluster assignments
    # for i, cluster in enumerate(clusters):
