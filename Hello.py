@@ -79,7 +79,7 @@ save_dir = f'photos_{lat}_{lon}'
 
 import shutil
 
-shutil.rmtree(save_dir)
+shutil.rmtree(f"{save_dir}/*")
 
 os.makedirs(save_dir, exist_ok = True)
 
